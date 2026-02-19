@@ -3,60 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadi AI</title>
+    <title>Hadi AI | Personal Assistant</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="splash-screen">
-        <div class="splash-content">
-            <h1 class="splash-text">Welcome Hadi AI...</h1>
-            <div class="loader-line"></div>
-        </div>
+    <div id="loader">
+        <div class="terminal-text" id="terminal">Initializing...</div>
+        <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
     </div>
 
-    <header>
-        <div class="header-left">
-            <span class="logo-text">Welcome!!!</span>
+    <div id="main-content" style="display: none;">
+        <nav class="navbar">
+            <div class="logo">Hadi<span>AI</span></div>
+            <div class="user-tag">Hadi AI| CREATOR: HADI</div>
+        </nav>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="message ai-message">Selamat datang,saya siap membantu...1!!</div>
         </div>
-        <button class="reset-icon" onclick="resetChat()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-            </svg>
-        </button>
-    </header>
 
-    <main id="chat-container"></main>
-
-    <div id="image-preview-container" style="display: none;">
-        <img id="image-preview" src="" alt="Preview">
-        <button class="close-preview" onclick="clearPreview()">×</button>
-    </div>
-
-    <div class="input-area-fixed">
-        <div class="input-pill">
-            <input type="file" id="file-input" accept="image/*" style="display: none;">
-            <button type="button" class="add-media-btn" onclick="document.getElementById('file-input').click()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            </button>
-            
-            <input type="text" id="user-input" placeholder="Tuliskan..." autocomplete="off">
-
-            <div class="button-group">
-                <button type="button" id="mic-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-                </button>
-
-                <button type="button" id="send-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(45deg); margin-left: -3px; margin-top: -2px;">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea id="userInput" placeholder="Tuliskan..." rows="1"></textarea>
+  <button id="sendBtn">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
         </div>
-        <p class="disclaimer">Hadi juga adalah manusia atuh!!! dapat membuat kesalahan.</p>
     </div>
 
     <script src="script.js"></script>
